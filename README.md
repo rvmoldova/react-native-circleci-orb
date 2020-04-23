@@ -15,7 +15,7 @@ First, we recommend reading the [Using Orbs](https://circleci.com/docs/2.0/using
 This Orb provides three different categories of tools to help you build and test your React Native app on CircleCI:
 
 * **Executors**: Machines which are configured for use with React Native.
-* **Commands**: Individual tasks which you can piece together in your own jobs to perform tasks like installing dependencies, building an APK, or running Detox tests.
+* **Commands**: Individual tasks which you can piece together in your own jobs to perform tasks like installing dependencies, building an APK/AAB, or running Detox tests.
 * **Jobs**: Groups of commands which are typically used together as a stage in a pipeline.
 
 ## Setup

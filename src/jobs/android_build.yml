@@ -33,6 +33,10 @@ parameters:
     description: The build type to build. This is normally either "debug" or "release" but you may have custom build types configured for your app.
     type: string
     default: "debug"
+  dist_type:
+    description: The distributive type to build. "assemble" for APK and "bundle" for AAB.
+    type: string
+    default: "assemble"
   on_after_initialize:
     description: A custom command to run right after yarn install.
     type: string
@@ -58,15 +62,16 @@ steps:
   - android_build:
       project_path: <<parameters.project_path>>
       build_type: <<parameters.build_type>>
+      dist_type: <<parameters.dist_type>>
   - when:
       condition: <<parameters.persist_to_workspace>>
       steps:
         - persist_to_workspace:
             root: .
             paths:
-              - <<parameters.project_path>>/app/build/outputs/apk
+              - <<parameters.project_path>>/app/build/outputs
   - when:
       condition: <<parameters.store_artifacts>>
       steps:
         - store_artifacts:
-            path: <<parameters.project_path>>/app/build/outputs/apk
+            path: <<parameters.project_path>>/app/build/outputs
